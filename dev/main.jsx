@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Grid, Row, Col} from 'react-bootstrap';
 
 import Task1 from './task1/';
+import Task2 from './task2/';
 
 class Exercise extends React.Component{
     render(){
@@ -11,8 +12,8 @@ class Exercise extends React.Component{
                 <Col xs = {12} sm = {12} className = "text-center">
                     <h3>Задание {this.props.num}</h3>
                     <h4>{this.props.title}</h4>
-                    <h5>{this.props.description}</h5>
-                    <Task1 />
+                    <h4 dangerouslySetInnerHTML={{__html: this.props.description}}></h4>
+                    {this.props.children}
                 </Col>
             </Row>
         );
@@ -31,10 +32,17 @@ class Page extends React.Component{
                 </Row>
                 <Exercise
                     num = "1"
-                    title = "Построить примитивный МП - автомат."
-                    description = "7. {1^n 0^m | m&gt;n≥0}."
-
-                />
+                    title = "Построить примитивный МП - автомат:"
+                    description = "<b>7.</b> {1^n 0^m | m&gt;n≥0}.">
+                    <Task1 />
+                </Exercise>
+                <hr />
+                <Exercise
+                    num = "2"
+                    title = "Построить непримитивный МП-автомат (постараться найти автомат с одним состоянием), который будет выполнять перевод:"
+                    description = "<b>2.</b> 1<sup>n</sup>0<sup>m</sup>1<sup>n</sup>0<sup>m</sup> <i>в</i> 1<sup>m</sup>0<sup>m+n</sup> , n&gt;0, m&gt;0 (<i>разрешается использование нескольких стеков</i>).">
+                    <Task2 />
+                </Exercise>
             </Grid>
         );
     }

@@ -62,6 +62,10 @@
 
 	var _task2 = _interopRequireDefault(_task);
 
+	var _task3 = __webpack_require__(414);
+
+	var _task4 = _interopRequireDefault(_task3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -99,12 +103,8 @@
 	                        null,
 	                        this.props.title
 	                    ),
-	                    _react2.default.createElement(
-	                        'h5',
-	                        null,
-	                        this.props.description
-	                    ),
-	                    _react2.default.createElement(_task2.default, null)
+	                    _react2.default.createElement('h4', { dangerouslySetInnerHTML: { __html: this.props.description } }),
+	                    this.props.children
 	                )
 	            );
 	        }
@@ -146,12 +146,23 @@
 	                        )
 	                    )
 	                ),
-	                _react2.default.createElement(Exercise, {
-	                    num: '1',
-	                    title: '\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043F\u0440\u0438\u043C\u0438\u0442\u0438\u0432\u043D\u044B\u0439 \u041C\u041F - \u0430\u0432\u0442\u043E\u043C\u0430\u0442.',
-	                    description: '7. {1^n 0^m | m>n\u22650}.'
-
-	                })
+	                _react2.default.createElement(
+	                    Exercise,
+	                    {
+	                        num: '1',
+	                        title: '\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043F\u0440\u0438\u043C\u0438\u0442\u0438\u0432\u043D\u044B\u0439 \u041C\u041F - \u0430\u0432\u0442\u043E\u043C\u0430\u0442:',
+	                        description: '<b>7.</b> {1^n 0^m | m>n\u22650}.' },
+	                    _react2.default.createElement(_task2.default, null)
+	                ),
+	                _react2.default.createElement('hr', null),
+	                _react2.default.createElement(
+	                    Exercise,
+	                    {
+	                        num: '2',
+	                        title: '\u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043D\u0435\u043F\u0440\u0438\u043C\u0438\u0442\u0438\u0432\u043D\u044B\u0439 \u041C\u041F-\u0430\u0432\u0442\u043E\u043C\u0430\u0442 (\u043F\u043E\u0441\u0442\u0430\u0440\u0430\u0442\u044C\u0441\u044F \u043D\u0430\u0439\u0442\u0438 \u0430\u0432\u0442\u043E\u043C\u0430\u0442 \u0441 \u043E\u0434\u043D\u0438\u043C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435\u043C), \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0431\u0443\u0434\u0435\u0442 \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u0442\u044C \u043F\u0435\u0440\u0435\u0432\u043E\u0434:',
+	                        description: '<b>2.</b> 1<sup>n</sup>0<sup>m</sup>1<sup>n</sup>0<sup>m</sup> <i>\u0432</i> 1<sup>m</sup>0<sup>m+n</sup> , n>0, m>0 (<i>\u0440\u0430\u0437\u0440\u0435\u0448\u0430\u0435\u0442\u0441\u044F \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0435 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u0441\u0442\u0435\u043A\u043E\u0432</i>).' },
+	                    _react2.default.createElement(_task4.default, null)
+	                )
 	            );
 	        }
 	    }]);
@@ -39135,24 +39146,23 @@
 	        key: 'render',
 	        value: function render() {
 	            this.Atomate.setData(this.state.data);
+	            var result = this.Atomate.Do();
+	            var style = result === 'Все хорошо' ? "success" : "danger";
 	            return _react2.default.createElement(
 	                _reactBootstrap.Row,
 	                null,
 	                _react2.default.createElement(
 	                    _reactBootstrap.Col,
-	                    { xs: 6, sm: 6 },
-	                    _react2.default.createElement('input', { type: 'text', onChange: this.handlerChangedInput, className: 'input' })
-	                ),
-	                _react2.default.createElement(
-	                    _reactBootstrap.Col,
-	                    { xs: 6, sm: 6 },
+	                    { xs: 12, sm: 6, smOffset: 3 },
+	                    _react2.default.createElement('input', { type: 'text', onChange: this.handlerChangedInput, className: 'form-control' }),
+	                    _react2.default.createElement('br', null),
 	                    _react2.default.createElement(
 	                        'ul',
-	                        { className: 'list-style' },
+	                        { className: 'list-group' },
 	                        _react2.default.createElement(
 	                            'li',
-	                            { className: 'list-style-item' },
-	                            this.Atomate.Do()
+	                            { className: "list-group-item list-group-item-" + style },
+	                            result
 	                        )
 	                    )
 	                )
@@ -39282,6 +39292,246 @@
 	                }
 	            }
 	            return error === null ? "Все хорошо" : error;
+	        }
+	    }]);
+
+	    return Atomate;
+	}();
+
+	exports.default = Atomate;
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(159);
+
+	var _atomate = __webpack_require__(415);
+
+	var _atomate2 = _interopRequireDefault(_atomate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Task1 = function (_React$Component) {
+	    _inherits(Task1, _React$Component);
+
+	    function Task1(props) {
+	        _classCallCheck(this, Task1);
+
+	        var _this = _possibleConstructorReturn(this, (Task1.__proto__ || Object.getPrototypeOf(Task1)).call(this, props));
+
+	        _this.state = {
+	            data: ""
+	        };
+	        _this.Atomate = new _atomate2.default("");
+	        _this.handlerChangedInput = _this.handlerChangedInput.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Task1, [{
+	        key: 'handlerChangedInput',
+	        value: function handlerChangedInput(e) {
+	            this.setState({
+	                data: e.target.value
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            this.Atomate.setData(this.state.data);
+	            var result = this.Atomate.Do();
+	            var style = result.match(/(0|1)+/) !== null ? "success" : "danger";
+	            return _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Col,
+	                    { xs: 12, sm: 6, smOffset: 3 },
+	                    _react2.default.createElement('input', { type: 'text', onChange: this.handlerChangedInput, className: 'form-control' }),
+	                    _react2.default.createElement('br', null),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        { className: 'list-group' },
+	                        _react2.default.createElement(
+	                            'li',
+	                            { className: "list-group-item list-group-item-" + style },
+	                            result
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Task1;
+	}(_react2.default.Component);
+
+	exports.default = Task1;
+
+/***/ },
+/* 415 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Atomate = function () {
+	    function Atomate(str) {
+	        _classCallCheck(this, Atomate);
+
+	        this.setData(str);
+	    }
+
+	    _createClass(Atomate, [{
+	        key: 'setData',
+	        value: function setData(str) {
+	            this.data = str;
+	            this.memory = 'X'; // init
+	        }
+	    }, {
+	        key: 'getLastElement',
+	        value: function getLastElement() {
+	            return this.memory.length ? this.memory[this.memory.length - 1] : null;
+	        }
+	    }, {
+	        key: 'replaceMemory',
+	        value: function replaceMemory(sym) {
+	            if (this.memory.length) {
+	                this.popMemory();
+	                this.memory += sym;
+	            }
+	        }
+	    }, {
+	        key: 'popMemory',
+	        value: function popMemory() {
+	            if (this.memory.length) this.memory = this.memory.slice(0, this.memory.length - 1);
+	        }
+	    }, {
+	        key: 'pushMemory',
+	        value: function pushMemory(sym) {
+	            this.memory += sym;
+	        }
+	    }, {
+	        key: 'Do',
+	        value: function Do() {
+	            var n = this.data.length;
+	            var error = null;
+	            var result = [[], [], [], []];
+	            for (var i = 0; i < n && error === null;) {
+	                // идем по всей строке
+	                var symbol = this.data[i];
+
+	                if (this.getLastElement() === 'X') {
+
+	                    // X
+	                    if (symbol === '0') {
+	                        error = 'Нет едениц';
+	                    } else if (symbol === '1') {
+	                        this.replaceMemory("A");
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'A') {
+
+	                    // A
+	                    if (symbol === '0') {
+	                        this.popMemory();
+	                    } else if (symbol === '1') {
+	                        this.replaceMemory("CB");
+	                        i++;
+	                        result[0].push(1);
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'B') {
+
+	                    // B
+	                    if (symbol === '0') {
+	                        error = "Не хватает едениц";
+	                    } else if (symbol === '1') {
+	                        this.replaceMemory("CA");
+	                        i++;
+	                        result[2].push(1);
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'C') {
+
+	                    // C
+	                    if (symbol === '0') {
+	                        this.popMemory();
+	                        this.replaceMemory("D");
+	                        i++;
+	                        result[1].push(0);
+	                    } else if (symbol === '1') {
+	                        error = "Еденица запрещена после нуля";
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'D') {
+
+	                    // D
+	                    if (symbol === '0') {
+	                        this.popMemory();
+	                        result[3].push(0);
+	                        i++;
+	                    } else if (symbol === '1') {
+	                        error = "Еденица запрещена после нуля";
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === null) {
+
+	                    // empty
+	                    if (symbol === '0') {
+	                        this.pushMemory('E');
+	                    } else if (symbol === '1') {
+	                        error = "Еденица запрещена после нуля";
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'E') {
+
+	                    // E
+	                    if (symbol === '0') {
+	                        this.replaceMemory('F');
+	                        result[1].push(0);
+	                        i++;
+	                    } else if (symbol === '1') {
+	                        error = "Еденица запрещена после нуля";
+	                    } else error = 'Некорректный символ';
+	                } else if (this.getLastElement() === 'F') {
+
+	                    // F
+	                    if (symbol === '0') {
+	                        this.replaceMemory('E');
+	                        result[3].push(0);
+	                        i++;
+	                    } else if (symbol === '1') {
+	                        error = "Еденица запрещена после нуля";
+	                    } else error = 'Некорректный символ';
+	                }
+	            }
+	            if (error === null) {
+	                if (this.getLastElement() === 'X') error = "Нет едениц и нулей";else if (this.getLastElement() === 'A') error = "Нет нулей";else if (this.getLastElement() === 'B') error = "Не хватает едениц и нет нулей";else if (this.getLastElement() === 'C') error = "Мало нулей";else if (this.getLastElement() === 'D') error = "Мало нулей";else if (this.getLastElement() === null) error = "Колличество нулей и едениц совпадает";else if (this.getLastElement() === 'F') error = "Не хватает нулей";
+	            }
+
+	            var resultStrings = [result[0].join(""), result[1].join(""), result[2].join(""), result[3].join("")];
+
+	            return error === null ? resultStrings.join("") : error;
 	        }
 	    }]);
 
