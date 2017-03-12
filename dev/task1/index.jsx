@@ -20,15 +20,16 @@ export default class Task1 extends React.Component{
 
     render(){
         this.Atomate.setData(this.state.data);
+        let result = this.Atomate.Do();
+        let style = result === 'Все хорошо' ? "success" : "danger";
         return(
             <Row>
-                <Col xs = {6} sm = {6}>
-                    <input type = "text" onChange = {this.handlerChangedInput} className = "input" />
-                </Col>
-                <Col xs = {6} sm = {6}>
-                    <ul className = "list-style">
-                        <li className = "list-style-item">
-                            {this.Atomate.Do()}
+                <Col xs = {12} sm = {6} smOffset = {3}>
+                    <input type = "text" onChange = {this.handlerChangedInput} className = "form-control" />
+                    <br />
+                    <ul className = "list-group">
+                        <li className = {"list-group-item list-group-item-" + style}>
+                            {result}
                         </li>
                     </ul>
                 </Col>
