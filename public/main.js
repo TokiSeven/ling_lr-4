@@ -39206,7 +39206,7 @@
 	                        // состояние 1 - еденицы
 	                        if (memory.length) {
 	                            if (symbol == '1') {
-	                                memory.push(1);
+	                                memory.push('Z');
 	                                currState = 1;
 	                            } else if (symbol == '0') {
 	                                memory.pop();
@@ -39216,7 +39216,7 @@
 	                            }
 	                        } else {
 	                            if (symbol == '1') {
-	                                memory.push(1);
+	                                memory.push('Z');
 	                                currState = 1;
 	                            } else if (symbol == '0') {
 	                                currState = 3;
